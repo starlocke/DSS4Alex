@@ -2,11 +2,11 @@
 @using Ingeniux.Runtime
 @{
     Layout = "~/Views/_Layout.cshtml";
-    
-    if(Model != null)
-    {  
+
+    if (Model != null)
+    {
         ViewBag.Title = Model.GetElementValue("Title");
-        
+
         var title = Model.Element("Title");
         var hero = Model.Element("Hero");
         var bodyCopy = Model.Element("BodyCopy");
@@ -16,12 +16,15 @@
                 <div class="col-sm-8 col-sm-offset-2 text-left">
                     @{
                         Html.RenderPartial("Editable/Title", title);
-                        Html.RenderPartial("Editable/Hero", hero);
-                        <hr />
-                        Html.RenderPartial("Editable/BodyCopy", bodyCopy);    
+                    }
+                    <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Congrats to our Site of the Year Award winners! <a href="https://twitter.com/Lookout">@@Lookout</a> <a href="https://twitter.com/lasellcollege">@@lasellcollege</a> <a href="https://twitter.com/UltimateHCM">@@UltimateHCM</a> <a href="https://twitter.com/BlattnerEnergy">@@BlattnerEnergy</a> <a href="https://twitter.com/GallaudetU">@@GallaudetU</a> <a href="https://twitter.com/riministreet">@@riministreet</a> <a href="https://twitter.com/uihealthcare">@@uihealthcare</a> <a href="https://t.co/G0fm6vdaca">pic.twitter.com/G0fm6vdaca</a></p>&mdash; Ingeniux (@@ingeniux) <a href="https://twitter.com/ingeniux/status/781915332315185152">September 30, 2016</a></blockquote>
+                    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <hr />
+                    @{
+                        Html.RenderPartial("Editable/BodyCopy", bodyCopy);
                     }
                 </div>
             </div>
         </div>
-    }
+                        }
 }
