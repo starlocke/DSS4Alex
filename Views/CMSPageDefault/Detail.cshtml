@@ -1,0 +1,24 @@
+﻿@model Ingeniux.Runtime.CMSPageRequest
+@using Ingeniux.Runtime
+@{
+    Layout = "~/Views/_Layout.cshtml";
+
+    if (Model != null)
+    {
+        ViewBag.Title = Model.GetElementValue("Title");
+
+        var title = Model.Element("Title");
+        var bodyCopy = Model.Element("BodyCopy");
+
+        <div class="container-fluid">
+            <div class="row content">
+                <div class="col-sm-8 col-sm-offset-2 text-left">
+                    @{
+                        Html.RenderPartial("Editable/Title", title);
+                        Html.RenderPartial("Editable/BodyCopy", bodyCopy);
+                    }
+                </div>
+            </div>
+        </div>
+    }
+}

@@ -1,0 +1,30 @@
+﻿@model Ingeniux.Runtime.ICMSElement
+
+@if(Model != null)
+{
+    var homePage = Model.GetLinkItem("HomePage");
+    var topNavigationLinks = Model.GetNavigationItems("TopNavigation", Ingeniux.Runtime.NavigationElementType.Navigation);
+    var currentPageId = Model.Page.ID;
+    
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @_Helpers.RenderCMSLink(homePage, Url, cssClasses: "navbar-brand")
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    @foreach(var link in topNavigationLinks)
+                    {
+                        string cssClass = currentPageId == link.ID ? "class=active" : string.Empty;
+                        @_Helpers.RenderCMSLiWithLink(link, Url, cssClass)
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+}
